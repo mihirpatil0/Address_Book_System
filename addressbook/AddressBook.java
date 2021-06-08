@@ -34,6 +34,18 @@ public class AddressBook
 		          	//Edit contact.
 	        		editExistingContact();
 		          	break;
+	        case 3:
+		          	//Delete contact.
+	        		deleteExistingContact();
+		          	break;
+	        case 4:
+		        	//Display Details.
+	        		System.out.println(personList);
+		        	break;
+	        case 5:
+			       	//Exit from program.
+			        isExit = true;
+			        break;
 	        default:
 	        		System.out.println("Please enter valid input");
 			}
@@ -96,6 +108,28 @@ public class AddressBook
 		    	personList.get(i).setFirstName(newFirstName);
 		    }
 		}
+	}
+	
+	/**
+	 * UC-3
+	 * As per the input deleting exiting record.
+	 */
+	public void deleteExistingContact()
+	{
+		System.out.println("Enter Phone Number to delete record.");
+		String phoneNumber = scanner.next();
+		System.out.println("Trying to locate <" + phoneNumber + ">");
+		
+        for (int i = personList.size() - 1; i >= 0; --i)
+        {
+            Person f = personList.get(i);
+	        if (f.getPhoneNo().equals(phoneNumber)) 
+	        {
+	        	System.out.println("Found the number at index. " + i);
+	            personList.remove(i);
+	            System.out.println("... Successfully deleted the record.");
+	        }
+        }
 	}
 	
 	/**
