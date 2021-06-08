@@ -30,8 +30,12 @@ public class AddressBook
 	        		// Add details.
 	        		addNewContact();
 	        		break;
+	        case 2:
+		          	//Edit contact.
+	        		editExistingContact();
+		          	break;
 	        default:
-	          System.out.println("Please enter valid input");
+	        		System.out.println("Please enter valid input");
 			}
 		}
 	}
@@ -72,7 +76,27 @@ public class AddressBook
         personList.add(person);
 	}
 	
-	
+	/**
+	 * UC-2
+	 * Making changes in existing details,as per user input.
+	 * Restoring the newly edited details.
+	 */
+	public void editExistingContact()
+	{
+		System.out.println("Enter old first name:");
+		String oldFirstName = scanner.next();
+		System.out.println("Enter new first name:");
+		String newFirstName = scanner.next();
+		
+		for( int i = personList.size() - 1; i >= 0; --i)
+		{	
+			Person f = personList.get(i);
+		    if(f.getFirstName().equals(oldFirstName))
+		    {
+		    	personList.get(i).setFirstName(newFirstName);
+		    }
+		}
+	}
 	
 	/**
 	 * @param args
