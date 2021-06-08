@@ -13,8 +13,8 @@ public class Person
 	private String address;
 	private String city;
 	private String state;
-	private String email;
 	private String zip;
+	private String email;
 	private String phoneNo;
 
 	public String getFirstName() 
@@ -96,4 +96,17 @@ public class Person
 	{
 		this.phoneNo = phoneNo;
 	}
+	
+	@Override
+    public String toString(){
+        return "Person{" +"firstName=" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", address='" + address + '\'' +
+                ", city='" + city + '\'' +
+                ", state='" +state + '\'' +
+                ", zip='" + zip + '\'' +
+                ", phoneNo='" + phoneNo+ '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
 }
