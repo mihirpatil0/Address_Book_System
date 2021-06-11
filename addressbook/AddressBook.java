@@ -1,6 +1,7 @@
 package addressbook;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
@@ -10,6 +11,18 @@ public class AddressBook
 {
 	private static Scanner scanner = new Scanner(System.in);
 	List<Person> personList = new ArrayList<>();
+	HashMap<String, ArrayList<Person>> areaAddressBook = new HashMap<>();
+	String keyAreaBook;
+	
+	/**
+	 * Accepting AreaName from user as reference for ArrayList. 
+	 */
+	public void enterAreaBook()
+	{
+		System.out.println("Enter City Name for AddressBook:");
+		keyAreaBook = scanner.next();
+		chooseOption();
+	}
 	
 	/**
 	 * UC-1.
@@ -22,7 +35,9 @@ public class AddressBook
 	    
 	    while (!isExit) 
 	    {
-	      System.out.println("Enter options 1.Add. 2.Edit. 3.Delete. 4.Display Contact. 5.Exit.");
+	      System.out.println("Enter options 1.Add. 2.Edit. 3.Delete. 4.Display Contact. 5.Exit. 6.Display City-Wise-AddressBook ");
+	      
+		  
 	      int userInput = scanner.nextInt();
 	      switch (userInput)
 	      	{
@@ -46,6 +61,10 @@ public class AddressBook
 			       	//Exit from program.
 			        isExit = true;
 			        break;
+	        case 6:
+		       	//Display address book by area.
+		        System.out.println("City-Wise AddressBook: "+areaAddressBook);
+		        break;
 	        default:
 	        		System.out.println("Please enter valid input");
 			}
@@ -86,6 +105,10 @@ public class AddressBook
         person.setPhoneNo(scanner.next());
         
         personList.add(person);
+        
+        //storing arrayList along with the area name in hashMap.
+        areaAddressBook.put(keyAreaBook,(ArrayList<Person>) personList);
+        
 	}
 	
 	/**
@@ -139,7 +162,7 @@ public class AddressBook
 	public static void main(String[] args) 
 	{
 		AddressBook addressBookObj = new AddressBook(); 
-		addressBookObj.chooseOption();
+		addressBookObj.enterAreaBook();
 
 	}
 }
